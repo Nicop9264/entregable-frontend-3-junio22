@@ -12,14 +12,21 @@
 import { useState } from "react"
 
 export default function Item(props) {
-const [stockDisponible, setStockDisponible] = useState (0);
+const [stock , setStock] = useState (props.item.stock);
 
+function comprar(){
+  if(props.item.stock > 0){
+    props.item.stock = props.item.stock -1;
+    props.sumarAlCarrito();
+  }
+}
 
   return (
     <div className='producto'>
-      <h3>{props.nombre}</h3>
-      <p>{props.descripcion}</p>
-      <h5>En Stock:<span>{props.stockDisponible}</span></h5>
+      <h3>{props.item.producto.nombre}</h3>
+      <p>{props.item.producto.descripcion}</p>
+      <h5>En Stock:<span>{props.item.stock > 0? (props.item.stock) : "Agotado"}</span></h5>
+      <button onClick={()=> comprar()} disabled ={props.item.stock <= 0}>{props.item.stock > 0? 'COMPRAR': 'SIN STOCK'}</button>
     </div>
   )
 }

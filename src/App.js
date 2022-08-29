@@ -12,10 +12,14 @@ function App() {
 
 const [carrito , setCarrito] = useState(0);
 
+function aumentarCarrito(){
+    setCarrito (carrito +1);
+}
+
   return (
     <div className="App">
       <Cabecera carrito = {carrito}/>
-      <Listado />
+      <Listado aumentarCarrito = {aumentarCarrito}/>
     </div>
   );
 }
