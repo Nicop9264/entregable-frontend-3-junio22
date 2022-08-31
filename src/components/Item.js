@@ -27,7 +27,7 @@ function comprar(){
       <h3>{props.item.producto.nombre}</h3>
       <p>{props.item.producto.descripcion}</p>
       <h5>En Stock:<span>{stock > 0? (stock) : "Agotado"}</span></h5>
-      <button onClick={comprar} disabled ={props.item.stock <= 0}>{props.item.stock > 0? 'COMPRAR': 'SIN STOCK'}</button>
+      <button onClick={() => comprar()} disabled ={stock <= 0}>{stock > 0? 'COMPRAR': 'SIN STOCK'}</button>
     </div>
   )
 }
